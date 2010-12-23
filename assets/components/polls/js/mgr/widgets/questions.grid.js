@@ -149,7 +149,8 @@ Polls.window.CreateQuestion = function(config) {
 				xtype: 'polls-combo-categories',
 				fieldLabel: _('polls.category'),
 				name: 'category',
-				width: 200
+				width: 200,
+				allowBlank: true
 			}
 		]
     });
@@ -183,25 +184,29 @@ Polls.window.UpdateQuestion = function(config) {
 				xtype: 'polls-combo-categories',
 				fieldLabel: _('polls.category'),
 				name: 'category',
-				width: 200
+				width: 200,
+				allowBlank: true
 			},{
 				xtype: 'xdatetime',
 				fieldLabel: _('polls.publishdate'),
 				name: 'publishdate',
 				width: 200,
 				dateFormat: 'd-m-Y', 
-				timeFormat: 'H:i'
+				timeFormat: 'H:i',
+				allowBlank: true
 			},{
 				xtype: 'xdatetime',
 				fieldLabel: _('polls.unpublishdate'),
 				name: 'unpublishdate',
 				width: 200,
 				dateFormat: 'd-m-Y', 
-				timeFormat: 'H:i'
+				timeFormat: 'H:i',
+				allowBlank: true
 			},{
 				xtype: 'checkbox',
 				fieldLabel: _('polls.hide'),
-				name: 'hide'
+				name: 'hide',
+				allowBlank: true
 			}
 		]
     });
