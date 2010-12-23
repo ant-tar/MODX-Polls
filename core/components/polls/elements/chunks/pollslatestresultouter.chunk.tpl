@@ -1,0 +1,1 @@
+<h2>[[+question]]</h2><p>[[+category_name:ne=``:then=`[[%polls.category? &name=`[[+category_name]]`]], `]][[%polls.totalvotes? &num=`[[+totalVotes]]`]]</p><p>[[+answers]]</p>[[+logdate:ne=``:then=`<p><em>[[%polls.votedon? &date=`[[+logdate:strtotime:date=`%A %e %B %Y`]]` &time=`[[+logdate:strtotime:date=`%H:%M:%S`]]`]]</em></p>`]]

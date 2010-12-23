@@ -1,0 +1,1 @@
+[[+answer]] ([[%polls.votes? &num=`[[+votes]], [[+percent]]%`]])<br />

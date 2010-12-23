@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="polls" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+	
+	<object class="modPollCategory" table="polls_categories" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
+		
+		<composite alias="Questions" class="modPollQuestion" local="id" foreign="category" cardinality="many" owner="local" />
+	</object>
+	
+	<object class="modPollQuestion" table="polls_questions" extends="xPDOSimpleObject">
+		<field key="category" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
+		<field key="question" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
+		<field key="publishdate" dbtype="datetime" phptype="datetime" null="true" default="null" index="index" />
+		<field key="unpublishdate" dbtype="datetime" phptype="datetime" null="true" default="null" index="index" />
+		<field key="hide" dbtype="int" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" index="index" />
+		
+		<aggregate alias="Category" class="modPollCategory" local="category" foreign="id" cardinality="one" owner="foreign" />
+		<composite alias="Answers" class="modPollAnswer" local="id" foreign="question" cardinality="many" owner="local" />
+		<composite alias="Logs" class="modPollLog" local="id" foreign="question" cardinality="many" owner="local" />
+	</object>
+	
+	<object class="modPollAnswer" table="polls_answers" extends="xPDOSimpleObject">
+		<field key="question" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
+		<field key="answer" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
+		<field key="votes" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" />
+		<field key="sort_order" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" />
+		
+		<aggregate alias="Question" class="modPollQuestion" local="question" foreign="id" cardinality="one" owner="foreign" />
+		<composite alias="Logs" class="modPollLog" local="id" foreign="answer" cardinality="many" owner="local" />
+	</object>
+	
+	<object class="modPollLog" table="polls_logs" extends="xPDOSimpleObject">
+		<field key="question" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
+		<field key="answer" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
+		<field key="ipaddress" dbtype="varchar" precision="50" phptype="string" null="false" index="index" />
+		<field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
+		
+		<aggregate alias="Question" class="modPollQuestion" local="answer" foreign="id" cardinality="one" owner="foreign" />
+		<aggregate alias="Answer" class="modPollAnswer" local="answer" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+</model>
