@@ -14,7 +14,7 @@ set_time_limit(0);
 define('PKG_NAME', 'Polls');
 define('PKG_NAME_LOWER', 'polls');
 define('PKG_VERSION', '0.1');
-define('PKG_RELEASE', 'rc1');
+define('PKG_RELEASE', 'rc2');
 
 /* override with your own defines here (see build.config.sample.php) */
 require_once dirname(__FILE__) . '/build.config.php';
@@ -144,6 +144,7 @@ $modx->log(modX::LOG_LEVEL_INFO, 'Adding package attributes and setup options...
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
+    'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
 ));
 
 /* zip up package */

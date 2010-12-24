@@ -54,7 +54,7 @@
       $placeholders = $result->toArray();
       
       $category = $result->getOne('Category');
-      $placeholders['category'] = $category->get('name');
+      $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
       
       $answers = $result->getMany('Answers');
       $answersOutput = '';

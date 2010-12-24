@@ -53,9 +53,6 @@
   ));
   
   if(!empty($category) && is_numeric($category) && $category > 0) {
-    $c->select(array(
-      'Category.name AS category_name'
-    ));
     $c->innerJoin('modPollCategory','Category');
     $c->where(array(
       'Category.id:=' => $category
@@ -88,7 +85,7 @@
     $placeholders = $latest->toArray();
     
     $category = $latest->getOne('Category');
-    $placeholders['category'] = $category->get('name');
+    $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
     
     $answers = $latest->getMany('Answers');
     $answersOutput = '';

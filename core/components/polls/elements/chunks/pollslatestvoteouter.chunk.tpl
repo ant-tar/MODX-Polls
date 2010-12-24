@@ -9,6 +9,4 @@
 
 </form>
 
-<p>
-  <a href="[[+results_url]]">Show results</a>
-</p>
+[[+results_url:ne=``:then=`<p><a href="[[+results_url]]">[[%polls.showresults]]</a></p>`]]

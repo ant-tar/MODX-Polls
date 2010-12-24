@@ -1,6 +1,11 @@
 Changelog for Polls.
 
-Polls 0.1-rc1
+Polls 0.1-rc2 (December 24, 2010)
+====================================
+- Fix: PollsLatest snippet loads category even when not linked too
+- Fix: Moved contents of chunks between vote and results templates
+
+Polls 0.1-rc1 (December 23, 2010)
 ====================================
 - Initial project
 - Initial changelog started
