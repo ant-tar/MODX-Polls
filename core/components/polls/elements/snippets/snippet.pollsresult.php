@@ -58,10 +58,11 @@
       
       $answers = $result->getMany('Answers');
       $answersOutput = '';
-      foreach($answers as $answer) {
+      foreach($answers as $idx => $answer) {
         $answerParams = array_merge(
           $answer->toArray(), array(
-            'percent' => number_format(($answer->get('votes') / $result->get('totalVotes')) * 100, 1, '.', '')
+            'percent' => number_format(($answer->get('votes') / $result->get('totalVotes')) * 100, 1, '.', ''),
+			'idx' => $idx
           )
         );
         $answersOutput .= $modx->getChunk($tplAnswer, $answerParams);
