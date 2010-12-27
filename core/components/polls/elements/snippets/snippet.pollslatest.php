@@ -33,10 +33,10 @@
   if (!($polls instanceof Polls)) return '';
   
   // templates
-  $tplVote = $modx->getOption('tpl', $scriptProperties, 'pollsLatestVoteOuter');
-  $tplVoteAnswer = $modx->getOption('tplAnswer', $scriptProperties, 'pollsLatestVoteAnswer');
-  $tplResult = $modx->getOption('tpl', $scriptProperties, 'pollsLatestResultOuter');
-  $tplResultAnswer = $modx->getOption('tplAnswer', $scriptProperties, 'pollsLatestResultAnswer');
+  $tplVote = $modx->getOption('tplVote', $scriptProperties, 'pollsLatestVoteOuter');
+  $tplVoteAnswer = $modx->getOption('tplVoteAnswer', $scriptProperties, 'pollsLatestVoteAnswer');
+  $tplResult = $modx->getOption('tplResult', $scriptProperties, 'pollsLatestResultOuter');
+  $tplResultAnswer = $modx->getOption('tplResultAnswer', $scriptProperties, 'pollsLatestResultAnswer');
   
   // properties
   $category = $modx->getOption('category', $scriptProperties, null);
