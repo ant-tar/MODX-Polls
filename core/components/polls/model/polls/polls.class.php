@@ -7,7 +7,7 @@
 class Polls {
 	
 	/**
-     * Constructs the Customers object
+     * Constructs the object
      *
      * @param modX &$modx A reference to the modX object
      * @param array $config An array of configuration options
