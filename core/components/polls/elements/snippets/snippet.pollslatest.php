@@ -47,10 +47,6 @@
   
   // start getting latest poll
   $c = $modx->newQuery('modPollQuestion');
-  $c->select(array(
-    'modPollQuestion.*',
-    'SUM(Answers.votes) AS totalVotes',
-  ));
   
   if(!empty($category) && is_numeric($category) && $category > 0) {
     $c->innerJoin('modPollCategory','Category');
@@ -65,7 +61,6 @@
     "(`modPollQuestion`.`unpublishdate` <= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`unpublishdate` IS NULL)"
   ));
   $c->andCondition(array('modPollQuestion.hide:=' => '0'));
-  $c->groupby('id');
   $c->sortby($sortby, $sortdir);
   $c->limit(1);
   
@@ -83,7 +78,8 @@
     $modx->lexicon->load('polls:latestpoll');
     
     $placeholders = $latest->toArray();
-    
+    $placeholders['totalVotes'] = $latest->getTotalVotes();
+	
     $category = $latest->getOne('Category');
     $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
     
@@ -92,7 +88,7 @@
     foreach($answers as $idx => $answer) {
       $answerParams = array_merge(
         $answer->toArray(), array(
-          'percent' => number_format(($answer->get('votes') / $latest->get('totalVotes')) * 100, 1, '.', ''),
+          'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
 		  'idx' => $idx
         )
       );

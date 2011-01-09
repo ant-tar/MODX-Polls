@@ -32,10 +32,7 @@
     
     // start getting poll results
     $c = $modx->newQuery('modPollQuestion');
-    $c->select(array(
-      'modPollQuestion.*',
-      'SUM(Answers.votes) AS totalVotes',
-    ));
+    
     $c->innerJoin('modPollAnswer','Answers');
     $c->where(array(
       'modPollQuestion.id:=' => $_GET[$resultLinkVar],
@@ -43,7 +40,6 @@
       "(`modPollQuestion`.`publishdate` >= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`publishdate` IS NULL)",
       "(`modPollQuestion`.`unpublishdate` <= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`unpublishdate` IS NULL)"
     ));
-    $c->groupby('modPollQuestion.id');
     
     $result = $modx->getObject('modPollQuestion', $c);
     
@@ -52,7 +48,8 @@
       $modx->lexicon->load('polls:latestpoll');
     
       $placeholders = $result->toArray();
-      
+      $placeholders['totalVotes'] = $result->getTotalVotes();
+	  
       $category = $result->getOne('Category');
       $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
       
@@ -61,7 +58,7 @@
       foreach($answers as $idx => $answer) {
         $answerParams = array_merge(
           $answer->toArray(), array(
-            'percent' => number_format(($answer->get('votes') / $result->get('totalVotes')) * 100, 1, '.', ''),
+            'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
 			'idx' => $idx
           )
         );

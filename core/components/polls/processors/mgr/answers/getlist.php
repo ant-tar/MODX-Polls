@@ -21,11 +21,14 @@ if(!empty($query)) {
 }
 $c->sortby($sort, $dir);
 
+$totalVotes = $question->getTotalVotes();
 $answers = $question->getMany('Answers', $c);
 
 $list = array();
 foreach($answers as $answer) {
     $oneItem = $answer->toArray();
+	
+	$oneItem['percents'] = $answer->getVotesPercent($totalVotes).'%';
 	
     $oneItem['menu'] = array();
     $oneItem['menu'][] = array(

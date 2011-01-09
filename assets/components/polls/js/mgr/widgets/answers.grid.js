@@ -9,7 +9,7 @@ Polls.grid.Answers = function(config) {
 			id: MODx.request.question
 		},
 		save_action: 'mgr/answers/updateFromGrid',
-		fields: ['id','answer','votes','sort_order','menu'],
+		fields: ['id','answer','votes','percents','sort_order','menu'],
 		autosave: true,
 		remoteSort: true,
 		anchor: '97%',
@@ -27,12 +27,18 @@ Polls.grid.Answers = function(config) {
 			},{
 				header: _('polls.answers.votes'),
 				dataIndex: 'votes',
-				sortable: true
+				sortable: true,
+				width: 30
+			},{
+				header: _('polls.answers.percents'),
+				dataIndex: 'percents',
+				sortable: true,
+				width: 30
 			},{
 				header: _('polls.answers.sort'),
 				dataIndex: 'sort_order',
 				sortable: true,
-				width: 20,
+				width: 30,
 				editor: { xtype: 'textfield' }
 			}
 		],

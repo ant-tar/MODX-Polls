@@ -6,7 +6,7 @@ Polls.grid.Questions = function(config) {
 		url: Polls.config.connector_url,
 		baseParams: { action: 'mgr/questions/getlist' },
 		save_action: 'mgr/questions/updateFromGrid',
-		fields: ['id','category','question','publishdate','unpublishdate','hide','menu'],
+		fields: ['id','category','question','totalVotes','answers','publishdate','unpublishdate','hide','menu'],
 		paging: true,
 		autosave: true,
 		remoteSort: true,
@@ -22,6 +22,16 @@ Polls.grid.Questions = function(config) {
 				dataIndex: 'question',
 				sortable: true,
 				editor: { xtype: 'textfield' }
+			},{
+				header: _('polls.answers'),
+				dataIndex: 'answers',
+				width: 35,
+				sortable: true
+			},{
+				header: _('polls.questions.votes'),
+				dataIndex: 'totalVotes',
+				width: 35,
+				sortable: true
 			},{
 				header: _('polls.publishdate'),
 				dataIndex: 'publishdate',

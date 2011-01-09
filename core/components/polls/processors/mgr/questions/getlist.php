@@ -33,6 +33,11 @@ $list = array();
 foreach($results as $entry) {
     $oneItem = $entry->toArray();
 	
+	$oneItem['totalVotes'] = $entry->getTotalVotes();
+	
+	$answers = $entry->getMany('Answers');
+	$oneItem['answers'] = count($answers);
+	
     $oneItem['menu'] = array();
     $oneItem['menu'][] = array(
         'text' => $modx->lexicon('polls.questions.update'),
