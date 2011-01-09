@@ -55,7 +55,6 @@
     ));
   }
   
-  $c->innerJoin('modPollAnswer','Answers');
   $c->where(array(
     "(`modPollQuestion`.`publishdate` >= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`publishdate` IS NULL)",
     "(`modPollQuestion`.`unpublishdate` <= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`unpublishdate` IS NULL)"
