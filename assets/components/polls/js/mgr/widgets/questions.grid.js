@@ -115,6 +115,20 @@ Ext.extend(Polls.grid.Questions, MODx.grid.Grid,{
         
         location.href = '?a=' + MODx.request.a + '&action=questions/answers&question=' + this.menu.record.id;
     },
+	duplicateQuestion: function(btn, e) {
+		MODx.msg.confirm({
+			title: _('polls.questions.duplicate'),
+			text: _('polls.questions.duplicate_confirm'),
+			url: this.config.url,
+			params: {
+				action: 'mgr/questions/duplicate',
+				id: this.menu.record.id
+			},
+			listeners: {
+				'success': { fn:this.refresh, scope:this }
+			}
+		});
+	},
 	removeQuestion: function() {
 		MODx.msg.confirm({
 			title: _('polls.questions.remove'),

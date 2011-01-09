@@ -13,8 +13,8 @@ set_time_limit(0);
 
 define('PKG_NAME', 'Polls');
 define('PKG_NAME_LOWER', 'polls');
-define('PKG_VERSION', '0.1');
-define('PKG_RELEASE', 'rc2');
+define('PKG_VERSION', '1.0');
+define('PKG_RELEASE', 'pl');
 
 /* override with your own defines here (see build.config.sample.php) */
 require_once dirname(__FILE__) . '/build.config.php';

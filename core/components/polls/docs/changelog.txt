@@ -1,5 +1,12 @@
 Changelog for Polls.
 
+Polls 1.0-pl (January 9, 2011)
+====================================
+- Fix: Right chunk names loading in the latest snippet
+- Added: stats columns in the manager screens, like number of votes and ansers
+- Modified: objects to easier load of the total stats, like number of votes answers
+- Added: duplicating questions and answers (without stats)
+
 Polls 0.1-rc2 (December 24, 2010)
 ====================================
 - Fix: PollsLatest snippet loads category even when not linked too

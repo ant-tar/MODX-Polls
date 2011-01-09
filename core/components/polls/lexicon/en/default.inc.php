@@ -13,6 +13,7 @@ $_lang['polls.search'] = "Search...";
 $_lang['polls.publishdate'] = "Publishdate";
 $_lang['polls.unpublishdate'] = "Unpublishdate";
 $_lang['polls.hide'] = "Hide";
+$_lang['polls.duplicate'] = "Duplicate";
 
 // error strings
 $_lang['polls.error.griddata'] = "No data from the grid has been found!";
@@ -22,13 +23,17 @@ $_lang['polls.error.save'] = "Failed to save the record data!";
 // questions part
 $_lang['polls.questions'] = "Questions";
 $_lang['polls.question'] = "Question";
-$_lang['polls.questionid'] = "Question ID";
+$_lang['polls.questionid'] = "QID";
 $_lang['polls.questions.desc'] = "Here you can manage all the questions you want to be shown on your website. You're also able to hide polls from the website or publish and unpublish polls by setting dates. Edit values simple by clicking on the value.";
 $_lang['polls.questions.create'] = "Create Question";
 $_lang['polls.questions.create.error_save'] = "Failed to save the new question. Try it again!";
+$_lang['polls.questions.votes'] = "Votes";
+$_lang['polls.questions.duplicate'] = "Duplicate question and answers";
+$_lang['polls.questions.duplicate_confirm'] = "Are you sure you want to duplicate the question and the answers? This would not duplicate the results stats like number of answers.";
+$_lang['polls.questions.duplicate_error'] = "Failed duplicating question and/or answers. Try it again!";
 $_lang['polls.questions.update'] = "Update Question";
 $_lang['polls.questions.remove'] = "Remove Question";
-$_lang['polls.questions.remove_confirm'] = "Are you sure you want to remove this question?";
+$_lang['polls.questions.remove_confirm'] = "Are you sure you want to remove this question and all the answers and stats?";
 $_lang['polls.questions.error_remove'] = "Failed to remove the question. Try it again!";
 
 $_lang['polls.question.update'] = "Update question";
@@ -53,6 +58,7 @@ $_lang['polls.answerid'] = "Answer ID";
 $_lang['polls.answers.btnback'] = "Back to questions";
 $_lang['polls.answers.desc'] = "Manage here all the answers of the selected question. You can modify the answer by clicking on the text and you can change the number of sorting for the position of the answers. Note that answers with a sorting of 0 always be the last in the list.";
 $_lang['polls.answers.votes'] = "Votes";
+$_lang['polls.answers.percents'] = "Percents";
 $_lang['polls.answers.sort'] = "Sorting";
 $_lang['polls.answers.create'] = "Create Answer";
 $_lang['polls.answers.create.error_save'] = "Failed to create the new answer. Try it again!";

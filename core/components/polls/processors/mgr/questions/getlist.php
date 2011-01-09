@@ -48,7 +48,12 @@ foreach($results as $entry) {
         'text' => $modx->lexicon('polls.answers'),
         'handler' => 'this.setupAnswers'
     );
-       
+	
+    $oneItem['menu'][] = array(
+        'text' => $modx->lexicon('polls.duplicate'),
+        'handler' => 'this.duplicateQuestion'
+    );
+    
     $oneItem['menu'][] = '-';
     $oneItem['menu'][] = array(
         'text' => $modx->lexicon('polls.questions.remove'),
