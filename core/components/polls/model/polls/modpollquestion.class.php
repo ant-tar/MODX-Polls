@@ -3,9 +3,26 @@
 class modPollQuestion extends xPDOSimpleObject
 {
 	/**
+	 * Returns the number of total votes of the curren question
+	 *
+	 * @return integer
+	 */
+	public function getTotalVotes() {
+		
+		$totalVotes = 0;
+		$answers = $this->getMany('Answers');
+		
+		foreach($answers as $answer) {
+			$totalVotes += $answer->get('votes');
+		}
+		
+		return $totalVotes;
+	}
+	/**
 	 * To vote on a answer of this question
 	 *
 	 * @param array $properties
+	 * @return boolean
 	 */
 	public function vote($properties=array()) {
 		
@@ -31,6 +48,8 @@ class modPollQuestion extends xPDOSimpleObject
 	
 	/**
 	 * Checks if current visitor already has voted yet
+	 *
+	 * @return boolean
 	 */
 	public function hasVoted() {
 		

@@ -3,6 +3,18 @@
 class modPollAnswer extends xPDOSimpleObject
 {
 	/**
+	 * Returns the number of percents of the number of votes
+	 *
+	 * @return float
+	 */
+	public function getVotesPercent($total) {
+		
+		$percent = number_format(($this->votes / $total) * 100, 1, '.', '');
+		
+		return $percent;
+	}
+	
+	/**
 	 * Adds a vote to the current answer/question
 	 *
 	 * @return boolean
