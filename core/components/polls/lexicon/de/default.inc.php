@@ -4,10 +4,12 @@
  *
  * @package polls
  * @subpackage lexion
- * @language: English
- * @author: Bert Oost
- * @translation-date: 2010-12-21
+ * @language: German
+ * @author: Anselm Hannemann (www.anselm-hannemann.de)
+ * @translation-date: 2011-01-12
 */
+
+
 
 $_lang['polls'] = "Polls";
 $_lang['polls.manage'] = "Manage Polls";
