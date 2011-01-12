@@ -11,64 +11,64 @@
 
 
 
-$_lang['polls'] = "Polls";
-$_lang['polls.manage'] = "Manage Polls";
-$_lang['polls.desc'] = "Manage your poll categories, questions and answers here.";
-$_lang['polls.search'] = "Search...";
-$_lang['polls.publishdate'] = "Publishdate";
-$_lang['polls.unpublishdate'] = "Unpublishdate";
-$_lang['polls.hide'] = "Hide";
-$_lang['polls.duplicate'] = "Duplicate";
+$_lang['polls'] = "Umfragen";
+$_lang['polls.manage'] = "Umfragen verwalten";
+$_lang['polls.desc'] = "Verwalten Sie Ihre Umfragen, Antworten und Statistiken";
+$_lang['polls.search'] = "Suche...";
+$_lang['polls.publishdate'] = "Veröffentlichen am";
+$_lang['polls.unpublishdate'] = "Zurückziehen am";
+$_lang['polls.hide'] = "Verstecken";
+$_lang['polls.duplicate'] = "Duplizieren";
 
 // error strings
-$_lang['polls.error.griddata'] = "No data from the grid has been found!";
-$_lang['polls.error.update'] = "Could not update the record, because the record was unknown!";
-$_lang['polls.error.save'] = "Failed to save the record data!";
+$_lang['polls.error.griddata'] = "Es wurden keine Daten in der Tabelle gefunden!";
+$_lang['polls.error.update'] = "Update fehlgeschlagen! Der Eintrag konnte nicht gefunden werden.";
+$_lang['polls.error.save'] = "Speichern fehlgeschlagen!";
 
 // questions part
-$_lang['polls.questions'] = "Questions";
-$_lang['polls.question'] = "Question";
-$_lang['polls.questionid'] = "QID";
-$_lang['polls.questions.desc'] = "Here you can manage all the questions you want to be shown on your website. You're also able to hide polls from the website or publish and unpublish polls by setting dates. Edit values simple by clicking on the value.";
-$_lang['polls.questions.create'] = "Create Question";
-$_lang['polls.questions.create.error_save'] = "Failed to save the new question. Try it again!";
-$_lang['polls.questions.votes'] = "Votes";
-$_lang['polls.questions.duplicate'] = "Duplicate question and answers";
-$_lang['polls.questions.duplicate_confirm'] = "Are you sure you want to duplicate the question and the answers? This would not duplicate the results stats like number of answers.";
-$_lang['polls.questions.duplicate_error'] = "Failed duplicating question and/or answers. Try it again!";
-$_lang['polls.questions.update'] = "Update Question";
-$_lang['polls.questions.remove'] = "Remove Question";
-$_lang['polls.questions.remove_confirm'] = "Are you sure you want to remove this question and all the answers and stats?";
-$_lang['polls.questions.error_remove'] = "Failed to remove the question. Try it again!";
+$_lang['polls.questions'] = "Umfragen";
+$_lang['polls.question'] = "Umfrage";
+$_lang['polls.questionid'] = "ID";
+$_lang['polls.questions.desc'] = "Hier können Sie alle Umfragen verwalten, die Sie auf der Webseite anzeigen möchten. Sie können Ihre Umfragen verstecken, ein Veröffentlichungs- und Zurückziehendatum angeben. Dabei bleiben alle Daten erhalten. Ändern Sie die Werte und Inhalte indem Sie auf das jeweilige Feld doppelklicken.";
+$_lang['polls.questions.create'] = "Umfrage erstellen";
+$_lang['polls.questions.create.error_save'] = "Speichern der Umfrage fehlgeschlagen! Bitte versuchen Sie es erneut!";
+$_lang['polls.questions.votes'] = "Stimmen";
+$_lang['polls.questions.duplicate'] = "Umfrage und Antworten duplizieren";
+$_lang['polls.questions.duplicate_confirm'] = "Sind Sie sicher, dass Sie die Umfrage mit allen Antworten duplizieren möchten? Achtung: Die Statisiken und Stimmen werden hierbei nicht übernommen!";
+$_lang['polls.questions.duplicate_error'] = "Duplizieren der Umfrage und/oder Antworten fehlgeschlagen! Bitte versuchen Sie es erneut!";
+$_lang['polls.questions.update'] = "Umfrage bearbeiten";
+$_lang['polls.questions.remove'] = "Umfrage entfernen";
+$_lang['polls.questions.remove_confirm'] = "Sind Sie sicher, dass Sie diese Umfrage und alle Antworten sowie Ergebnisse löschen möchten?";
+$_lang['polls.questions.error_remove'] = "Löschen der Umfrage fehlgeschlagen! Bitte versuchen Sie es erneut!";
 
-$_lang['polls.question.update'] = "Update question";
-$_lang['polls.question.error_update'] = "Failed to update the question. Try it again!";
-$_lang['polls.questions.errorload'] = "Failed to load the question!";
+$_lang['polls.question.update'] = "Umfrage bearbeiten";
+$_lang['polls.question.error_update'] = "Speichern der bearbeiteten Umfrage fehlgeschlagen! Bitte versuchen Sie es erneut!";
+$_lang['polls.questions.errorload'] = "Umfrage kann nicht geladen werden!";
 
 // categories part
-$_lang['polls.categories'] = "Categories";
-$_lang['polls.category'] = "Category";
-$_lang['polls.categoryid'] = "Category ID";
-$_lang['polls.categories.desc'] = "Below a list of the categories available for the questions. You can edit a category simple by clicking on the category name and removing by clicking with your right mousebutton.";
-$_lang['polls.categories.create'] = "Create Category";
-$_lang['polls.categories.create.error_save'] = "Failed to save the new category. Try it again!";
-$_lang['polls.categories.remove'] = "Remove Category";
-$_lang['polls.categories.remove_confirm'] = "Are you sure you want to remove this category and all the questions inside it?";
-$_lang['polls.categories.error_remove'] = "Failed to remove the category. Try it again!";
+$_lang['polls.categories'] = "Kategorien";
+$_lang['polls.category'] = "Kategorie";
+$_lang['polls.categoryid'] = "Kategorie ID";
+$_lang['polls.categories.desc'] = "Sämtliche Kategorien für die Umfragen sind unterhalb aufgelistet. Sie können die Kategorie bearbeiten indem Sie auf den Namen klicken und Kategorien mit Rechtsklick löschen.";
+$_lang['polls.categories.create'] = "Kategorie erstellen";
+$_lang['polls.categories.create.error_save'] = "neue Kategorie konnte nicht erstellt werden! Bitte versuchen Sie es erneut!";
+$_lang['polls.categories.remove'] = "Kategorie entfernen";
+$_lang['polls.categories.remove_confirm'] = "Sind Sie sicher, dass Sie diese Kategorie mit allen Umfragen darin entfernen möchten?";
+$_lang['polls.categories.error_remove'] = "Löschen der Kategorie fehlgeschlagen! Bitte versuchen Sie es erneut!";
 
 // answers part
-$_lang['polls.answers'] = "Answers";
-$_lang['polls.answer'] = "Answer";
-$_lang['polls.answerid'] = "Answer ID";
-$_lang['polls.answers.btnback'] = "Back to questions";
-$_lang['polls.answers.desc'] = "Manage here all the answers of the selected question. You can modify the answer by clicking on the text and you can change the number of sorting for the position of the answers. Note that answers with a sorting of 0 always be the last in the list.";
-$_lang['polls.answers.votes'] = "Votes";
-$_lang['polls.answers.percents'] = "Percents";
-$_lang['polls.answers.sort'] = "Sorting";
-$_lang['polls.answers.create'] = "Create Answer";
-$_lang['polls.answers.create.error_save'] = "Failed to create the new answer. Try it again!";
-$_lang['polls.answers.remove'] = "Remove Answer";
-$_lang['polls.answers.remove_confirm'] = "Are you sure you want to remove this answer?";
-$_lang['polls.answers.error_remove'] = "Failed to remove the answer. Try it again!";
+$_lang['polls.answers'] = "Antworten";
+$_lang['polls.answer'] = "Antwort";
+$_lang['polls.answerid'] = "Antwort ID";
+$_lang['polls.answers.btnback'] = "zurück zu den Umfragen";
+$_lang['polls.answers.desc'] = "Verwalten Sie hier Ihre Antworten für die gewählte Umfrage. Sie können die Kategorie bearbeiten indem Sie auf den Namen klicken und Kategorien mit Rechtsklick löschen. Die Reihenfolge der Antworten kann durch Vergabe der Sortierungs ID verändert werden. Antworten mit der Sortierungs ID '0' stehen an immer letzter Stelle.";
+$_lang['polls.answers.votes'] = "Stimmen";
+$_lang['polls.answers.percents'] = "Prozent";
+$_lang['polls.answers.sort'] = "Sortierung";
+$_lang['polls.answers.create'] = "Antwort erstellen";
+$_lang['polls.answers.create.error_save'] = "Antwort erstellen fehlgeschlagen. Bitte versuchen Sie es erneut!";
+$_lang['polls.answers.remove'] = "Antwort entfernen";
+$_lang['polls.answers.remove_confirm'] = "Sind Sie sicher, dass Sie diese Antwort löschen möchten?";
+$_lang['polls.answers.error_remove'] = "Antwort löschen fehlgeschlagen. Bitte versuchen Sie es erneut!";
 
 ?>
