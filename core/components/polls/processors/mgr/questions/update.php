@@ -22,6 +22,6 @@ if($question->save() == false) {
     return $modx->error->failure($modx->lexicon('polls.question.error_update'));
 }
 
-return $modx->error->success('', $customers);
+return $modx->error->success('', $question);
 
 ?>
