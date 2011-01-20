@@ -49,7 +49,7 @@
     
       $placeholders = $result->toArray();
       $placeholders['totalVotes'] = $result->getTotalVotes();
-	  
+    
       $category = $result->getOne('Category');
       $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
       
@@ -59,7 +59,7 @@
         $answerParams = array_merge(
           $answer->toArray(), array(
             'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
-			'idx' => $idx
+      'idx' => $idx
           )
         );
         $answersOutput .= $modx->getChunk($tplAnswer, $answerParams);

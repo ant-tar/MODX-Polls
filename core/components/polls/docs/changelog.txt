@@ -4,18 +4,24 @@ Polls 1.1-pl (not released yet)
 ====================================
 - Added: German translation (Thanks to Anselm Hannemann)
 - Fixed: return output while saving a question
+- Fixed: latest poll snippet with category relation
+- Fixed: hasVoted() methods for a single question or answer
+- Added: category filter combobox on questions overview
+- Added: category column in the questions overview
+- Added: polls_manage permission
+		 (admin group default have this at install)
 
 Polls 1.0-pl (January 9, 2011)
 ====================================
-- Fix: Right chunk names loading in the latest snippet
+- Fixed: Right chunk names loading in the latest snippet
 - Added: stats columns in the manager screens, like number of votes and ansers
 - Modified: objects to easier load of the total stats, like number of votes answers
 - Added: duplicating questions and answers (without stats)
 
 Polls 0.1-rc2 (December 24, 2010)
 ====================================
-- Fix: PollsLatest snippet loads category even when not linked too
-- Fix: Moved contents of chunks between vote and results templates
+- Fixed: PollsLatest snippet loads category even when not linked too
+- Fixed: Moved contents of chunks between vote and results templates
 
 Polls 0.1-rc1 (December 23, 2010)
 ====================================

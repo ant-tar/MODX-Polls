@@ -33,9 +33,6 @@ class Polls {
 		), $config);
 	   
 		$this->modx->addPackage('polls', $this->config['modelPath']);
-	   
-		// Will create models etc.
-		//$this->_setupModels();
 	}
 	
 	/**
@@ -71,22 +68,6 @@ class Polls {
         }
         return true;
     }
-	
-	/**
-	 * Will generate the models for this part
-	 */
-	private function _setupModels() {
-		/*
-		$this->modx->setLogLevel(xPDO::LOG_LEVEL_INFO);
-		$this->modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
-		*/
-		$manager = $this->modx->getManager();
-		$generator = $manager->getGenerator();
-		
-		$schema = $this->config['modelPath'].'schema/polls.mysql.schema.xml';
-		$generator->parseSchema($schema, $this->config['modelPath']);
-		exit();
-	}
 }
 
 ?>

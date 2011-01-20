@@ -66,7 +66,8 @@ class modPollAnswer extends xPDOSimpleObject
 	private function hasVoted() {
 		
 		$vote = $this->getOne('Logs', array( 
-			'ipaddress:=' => $_SERVER['REMOTE_ADDR']
+			'ipaddress:=' => $_SERVER['REMOTE_ADDR'],
+			'answer' => $this->id
 		));
 		
 		if(!empty($vote)) {

@@ -1,13 +1,13 @@
 <?php
 /**
- * The default lexicon entries
+ * The default English Poll lexicon entries
  *
  * @package polls
  * @subpackage lexion
  * @language: English
  * @author: Bert Oost
- * @translation-date: 2010-12-21
-*/
+ * @translation-date: 2011-01-20
+ */
 
 $_lang['polls'] = "Polls";
 $_lang['polls.manage'] = "Manage Polls";
@@ -27,6 +27,7 @@ $_lang['polls.error.save'] = "Failed to save the record data!";
 $_lang['polls.questions'] = "Questions";
 $_lang['polls.question'] = "Question";
 $_lang['polls.questionid'] = "QID";
+$_lang['polls.question.nocategory'] = "No category";
 $_lang['polls.questions.desc'] = "Here you can manage all the questions you want to be shown on your website. You're also able to hide polls from the website or publish and unpublish polls by setting dates. Edit values simple by clicking on the value.";
 $_lang['polls.questions.create'] = "Create Question";
 $_lang['polls.questions.create.error_save'] = "Failed to save the new question. Try it again!";
@@ -46,6 +47,7 @@ $_lang['polls.questions.errorload'] = "Failed to load the question!";
 // categories part
 $_lang['polls.categories'] = "Categories";
 $_lang['polls.category'] = "Category";
+$_lang['polls.category.filter'] = "Filter on Category";
 $_lang['polls.categoryid'] = "Category ID";
 $_lang['polls.categories.desc'] = "Below a list of the categories available for the questions. You can edit a category simple by clicking on the category name and removing by clicking with your right mousebutton.";
 $_lang['polls.categories.create'] = "Create Category";

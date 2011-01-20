@@ -6,7 +6,7 @@ Polls.grid.Questions = function(config) {
 		url: Polls.config.connector_url,
 		baseParams: { action: 'mgr/questions/getlist' },
 		save_action: 'mgr/questions/updateFromGrid',
-		fields: ['id','category','question','totalVotes','answers','publishdate','unpublishdate','hide','menu'],
+		fields: ['id','category','category_name','question','totalVotes','answers','publishdate','unpublishdate','hide','menu'],
 		paging: true,
 		autosave: true,
 		remoteSort: true,
@@ -22,6 +22,10 @@ Polls.grid.Questions = function(config) {
 				dataIndex: 'question',
 				sortable: true,
 				editor: { xtype: 'textfield' }
+			},{
+				header: _('polls.category'),
+				dataIndex: 'category_name',
+				sortable: true
 			},{
 				header: _('polls.answers'),
 				dataIndex: 'answers',
@@ -70,6 +74,18 @@ Polls.grid.Questions = function(config) {
 			},{
 				xtype: 'tbfill'
 			},{
+				xtype: 'polls-combo-categories',
+				name: 'categories',
+				id: 'filter-category',
+				emptyText: _('polls.category.filter'),
+				value: MODx.request.category ? MODx.request.category : null,
+				width: 150,
+				listeners: {
+					'select': { fn: this.filterByCategory, scope:this }
+				}
+			},{
+				xtype: 'tbspacer'
+			},{
 				xtype: 'textfield',
 				id: 'questions-search-filter',
 				emptyText: _('polls.search'),
@@ -94,6 +110,11 @@ Ext.extend(Polls.grid.Questions, MODx.grid.Grid,{
     search: function(tf, nv, ov) {
         var s = this.getStore();
         s.baseParams.query = tf.getValue();
+        this.getBottomToolbar().changePage(1);
+        this.refresh();
+    },
+	filterByCategory: function(cb,rec,ri) {
+        this.getStore().baseParams['category'] = rec.data['name'];
         this.getBottomToolbar().changePage(1);
         this.refresh();
     },

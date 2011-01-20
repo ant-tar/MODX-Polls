@@ -1,13 +1,13 @@
 <?php
 /**
- * The latest poll lexicon entries
+ * The latest poll English Poll lexicon entries
  *
  * @package polls
  * @subpackage lexion
  * @language: English
  * @author: Bert Oost
  * @translation-date: 2010-12-21
-*/
+ */
 
 $_lang['polls.totalvotes'] = "Total votes: [[+num]]";
 $_lang['polls.vote'] = "Vote!";

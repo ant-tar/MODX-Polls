@@ -6,6 +6,7 @@
  * @subpackage processors
  */
 $isLimit = !empty($_REQUEST['limit']);
+$category = $modx->getOption('category', $_REQUEST, false);
 $start = $modx->getOption('start', $_REQUEST, 0);
 $limit = $modx->getOption('limit', $_REQUEST, 20);
 $sort = $modx->getOption('sort', $_REQUEST, 'id');
@@ -21,6 +22,12 @@ if(!empty($query)) {
 	));
 }
 
+// get category
+$category = $modx->getObject('modPollCategory', array('name' => $category));
+if(!empty($category)) {
+	$c->where(array('modPollQuestion.category:=' => $category->get('id')));
+}
+
 $count = $modx->getCount('modPollQuestion', $c);
 $c->sortby($sort, $dir);
 if($isLimit) {
@@ -32,6 +39,12 @@ $results = $modx->getCollection('modPollQuestion', $c);
 $list = array();
 foreach($results as $entry) {
     $oneItem = $entry->toArray();
+	
+	$category = $entry->getOne('Category');
+	$oneItem['category_name'] = $modx->lexicon('polls.question.nocategory');
+	if(!empty($category)) {
+		$oneItem['category_name'] = $category->get('name');
+	}
 	
 	$oneItem['totalVotes'] = $entry->getTotalVotes();
 	

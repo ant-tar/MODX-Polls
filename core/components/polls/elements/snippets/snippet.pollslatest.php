@@ -49,9 +49,8 @@
   $c = $modx->newQuery('modPollQuestion');
   
   if(!empty($category) && is_numeric($category) && $category > 0) {
-    $c->innerJoin('modPollCategory','Category');
     $c->where(array(
-      'Category.id:=' => $category
+      'category:=' => $category
     ));
   }
   
@@ -78,7 +77,7 @@
     
     $placeholders = $latest->toArray();
     $placeholders['totalVotes'] = $latest->getTotalVotes();
-	
+  
     $category = $latest->getOne('Category');
     $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
     
@@ -88,7 +87,7 @@
       $answerParams = array_merge(
         $answer->toArray(), array(
           'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
-		  'idx' => $idx
+          'idx' => $idx
         )
       );
       $answersOutput .= $modx->getChunk((!$latest->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);

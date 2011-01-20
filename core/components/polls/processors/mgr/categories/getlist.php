@@ -6,6 +6,7 @@
  * @subpackage processors
  */
 $isLimit = !empty($_REQUEST['limit']);
+$combobox = $modx->getOption('combo', $_REQUEST, false);
 $start = $modx->getOption('start', $_REQUEST, 0);
 $limit = $modx->getOption('limit', $_REQUEST, 20);
 $sort = $modx->getOption('sort', $_REQUEST, 'id');
@@ -30,6 +31,14 @@ if($isLimit) {
 $results = $modx->getCollection('modPollCategory', $c);
 
 $list = array();
+
+if(!empty($combobox) && $combobox == 'true') {
+	$list[] = array(
+		'id' => 0,
+		'name' => $modx->lexicon('polls.question.nocategory')
+	);
+}
+
 foreach($results as $entry) {
     $oneItem = $entry->toArray();
 	
