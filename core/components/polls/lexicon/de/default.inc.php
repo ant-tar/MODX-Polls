@@ -24,10 +24,10 @@ $_lang['polls.error.update'] = "Update fehlgeschlagen! Der Eintrag konnte nicht 
 $_lang['polls.error.save'] = "Speichern fehlgeschlagen!";
 
 // questions part
-$lang['polls.question.nocategory'] = "keine Kategorie";
 $_lang['polls.questions'] = "Umfragen";
 $_lang['polls.question'] = "Umfrage";
 $_lang['polls.questionid'] = "ID";
+$_lang['polls.question.nocategory'] = "keine Kategorie";
 $_lang['polls.questions.desc'] = "Hier können Sie alle Umfragen verwalten, die Sie auf der Webseite anzeigen möchten. Sie können Ihre Umfragen verstecken, ein Veröffentlichungs- und Zurückziehendatum angeben. Dabei bleiben alle Daten erhalten. Ändern Sie die Werte und Inhalte indem Sie auf das jeweilige Feld doppelklicken.";
 $_lang['polls.questions.create'] = "Umfrage erstellen";
 $_lang['polls.questions.create.error_save'] = "Speichern der Umfrage fehlgeschlagen! Bitte versuchen Sie es erneut!";
@@ -45,9 +45,9 @@ $_lang['polls.question.error_update'] = "Speichern der bearbeiteten Umfrage fehl
 $_lang['polls.questions.errorload'] = "Umfrage kann nicht geladen werden!";
 
 // categories part
-$lang['polls.category.filter'] = "Kategoriefilter";
 $_lang['polls.categories'] = "Kategorien";
 $_lang['polls.category'] = "Kategorie";
+$_lang['polls.category.filter'] = "Kategoriefilter";
 $_lang['polls.categoryid'] = "Kategorie ID";
 $_lang['polls.categories.desc'] = "Sämtliche Kategorien für die Umfragen sind unterhalb aufgelistet. Sie können die Kategorie bearbeiten indem Sie auf den Namen klicken und Kategorien mit Rechtsklick löschen.";
 $_lang['polls.categories.create'] = "Kategorie erstellen";
