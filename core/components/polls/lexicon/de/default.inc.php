@@ -9,8 +9,6 @@
  * @translation-date: 2011-01-12
 */
 
-
-
 $_lang['polls'] = "Umfragen";
 $_lang['polls.manage'] = "Umfragen verwalten";
 $_lang['polls.desc'] = "Verwalten Sie Ihre Umfragen, Antworten und Statistiken";
@@ -26,6 +24,7 @@ $_lang['polls.error.update'] = "Update fehlgeschlagen! Der Eintrag konnte nicht 
 $_lang['polls.error.save'] = "Speichern fehlgeschlagen!";
 
 // questions part
+$lang['polls.question.nocategory'] = "keine Kategorie";
 $_lang['polls.questions'] = "Umfragen";
 $_lang['polls.question'] = "Umfrage";
 $_lang['polls.questionid'] = "ID";
@@ -46,6 +45,7 @@ $_lang['polls.question.error_update'] = "Speichern der bearbeiteten Umfrage fehl
 $_lang['polls.questions.errorload'] = "Umfrage kann nicht geladen werden!";
 
 // categories part
+$lang['polls.category.filter'] = "Kategoriefilter";
 $_lang['polls.categories'] = "Kategorien";
 $_lang['polls.category'] = "Kategorie";
 $_lang['polls.categoryid'] = "Kategorie ID";
