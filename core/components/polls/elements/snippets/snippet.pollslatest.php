@@ -18,7 +18,7 @@
   *
   * SELECTION:
   *
-  * category - (Opt) will select the latest poll from the given category (id)
+  * category - (Opt) will select the latest poll from the given category (id), could be multiple devided by a comma
   * sortby - (Opt) to influence the normal order, order could be any field in list, defaults to id
   * sortdir - (Opt) to influence the normal order direction, defaults to DESC
   * [Note] No params; will select the latest poll from any category
@@ -48,15 +48,18 @@
   // start getting latest poll
   $c = $modx->newQuery('modPollQuestion');
   
-  if(!empty($category) && is_numeric($category) && $category > 0) {
-    $c->where(array(
-      'category:=' => $category
-    ));
+  if(!empty($category)) {
+    $categories = explode(',',$category);
+    foreach($categories as $categoryid) {
+      $c->orCondition(array(
+        'category:=' => $categoryid
+      ));
+    }
   }
   
   $c->where(array(
-    "(`modPollQuestion`.`publishdate` >= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`publishdate` IS NULL)",
-    "(`modPollQuestion`.`unpublishdate` <= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`unpublishdate` IS NULL)"
+    "(`modPollQuestion`.`publishdate` <= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`publishdate` IS NULL)",
+    "(`modPollQuestion`.`unpublishdate` >= '".date('Y-m-d H:i:s')."' OR `modPollQuestion`.`unpublishdate` IS NULL)"
   ));
   $c->andCondition(array('modPollQuestion.hide:=' => '0'));
   $c->sortby($sortby, $sortdir);

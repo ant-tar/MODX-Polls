@@ -1,6 +1,6 @@
 ﻿Changelog for Polls.
 
-Polls 1.1-pl (not released yet)
+Polls 1.1-rc1 (January 21, 2011)
 ====================================
 - Added: German translation (Thanks to Anselm Hannemann)
 - Fixed: return output while saving a question
@@ -11,6 +11,9 @@ Polls 1.1-pl (not released yet)
 - Added: polls_manage permission
 		 (admin group default have this at install)
 - Added: Russian translation (Thanks to elastic (on github))
+- Added: access permissions and policies
+- Added: multiple category support for the latest poll
+- Fixed: selecting latest between published and unpublisheddate
 
 
 Polls 1.0-pl (January 9, 2011)

@@ -16,6 +16,7 @@ if(empty($oldQuestion)) {
 // new question
 $newQuestion = $modx->newObject('modPollQuestion');
 $newQuestion->fromArray($oldQuestion->toArray('', true), '', false, true);
+$newQuestion->set('hide', true);
 
 // add answer
 $newAnswers = array();
