@@ -26,6 +26,7 @@ $menu->fromArray(array(
     'menuindex' => 0,
     'params' => '',
     'handler' => '',
+    'permissions' => 'polls.manage',
 ),'',true,true);
 $menu->addOne($action);
 unset($action);

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * The latest poll English Poll lexicon entries
  *

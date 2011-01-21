@@ -10,6 +10,8 @@ Polls 1.1-pl (not released yet)
 - Added: category column in the questions overview
 - Added: polls_manage permission
 		 (admin group default have this at install)
+- Added: Russian translation (Thanks to elastic (on github))
+
 
 Polls 1.0-pl (January 9, 2011)
 ====================================
@@ -18,10 +20,12 @@ Polls 1.0-pl (January 9, 2011)
 - Modified: objects to easier load of the total stats, like number of votes answers
 - Added: duplicating questions and answers (without stats)
 
+
 Polls 0.1-rc2 (December 24, 2010)
 ====================================
 - Fixed: PollsLatest snippet loads category even when not linked too
 - Fixed: Moved contents of chunks between vote and results templates
+
 
 Polls 0.1-rc1 (December 23, 2010)
 ====================================
