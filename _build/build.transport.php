@@ -14,7 +14,7 @@ set_time_limit(0);
 define('PKG_NAME', 'Polls');
 define('PKG_NAME_LOWER', 'polls');
 define('PKG_VERSION', '1.1');
-define('PKG_RELEASE', 'rc1');
+define('PKG_RELEASE', 'rc2');
 
 /* override with your own defines here (see build.config.sample.php) */
 require_once dirname(__FILE__) . '/build.config.php';
@@ -116,30 +116,6 @@ $builder->putVehicle($vehicle);
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaging in lexicon...');
 $builder->buildLexicon($sources['lexicon']);
 
-/* load menu */
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in menu...');
-$menu = include $sources['data'].'transport.menu.php';
-if (empty($menu)) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in menu.');
-$vehicle= $builder->createVehicle($menu,array (
-    xPDOTransport::PRESERVE_KEYS => true,
-    xPDOTransport::UPDATE_OBJECT => true,
-    xPDOTransport::UNIQUE_KEY => 'text',
-    xPDOTransport::RELATED_OBJECTS => true,
-    xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
-        'Action' => array (
-            xPDOTransport::PRESERVE_KEYS => false,
-            xPDOTransport::UPDATE_OBJECT => true,
-            xPDOTransport::UNIQUE_KEY => array ('namespace', 'controller'),
-        ),
-    ),
-));
-$modx->log(modX::LOG_LEVEL_INFO,'Adding in PHP resolvers...');
-$vehicle->resolve('php',array(
-    'source' => $sources['resolvers'] . 'resolve.tables.php',
-));
-$builder->putVehicle($vehicle);
-unset($vehicle,$menu);
-
 /* package in default access policy */
 $attributes = array (
     xPDOTransport::PRESERVE_KEYS => false,
@@ -180,6 +156,33 @@ if (is_array($templates)) {
     $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in Access Policy Templates.');
 }
 unset ($templates,$template,$idx,$ct,$attributes);
+
+/* load menu */
+$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in menu...');
+$menu = include $sources['data'].'transport.menu.php';
+if (empty($menu)) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in menu.');
+$vehicle= $builder->createVehicle($menu,array (
+    xPDOTransport::PRESERVE_KEYS => true,
+    xPDOTransport::UPDATE_OBJECT => true,
+    xPDOTransport::UNIQUE_KEY => 'text',
+    xPDOTransport::RELATED_OBJECTS => true,
+    xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
+        'Action' => array (
+            xPDOTransport::PRESERVE_KEYS => false,
+            xPDOTransport::UPDATE_OBJECT => true,
+            xPDOTransport::UNIQUE_KEY => array ('namespace', 'controller'),
+        ),
+    ),
+));
+$modx->log(modX::LOG_LEVEL_INFO,'Adding in PHP resolvers...');
+$vehicle->resolve('php',array(
+    'source' => $sources['resolvers'] . 'tables.resolver.php',
+));
+$vehicle->resolve('php',array(
+    'source' => $sources['resolvers'] . 'policy.resolver.php',
+));
+$builder->putVehicle($vehicle);
+unset($vehicle,$menu);
 
 /* now pack in the license file, readme and setup options */
 $modx->log(modX::LOG_LEVEL_INFO, 'Adding package attributes and setup options...');

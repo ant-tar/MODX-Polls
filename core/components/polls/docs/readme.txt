@@ -1,7 +1,7 @@
 --------------------
 Polls
 --------------------
-Version: 1.1-rc1
+Version: 1.1-rc2
 Since: December 21th, 2010
 Author: Bert Oost <bertoost85@gmail.com>
 
