@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * The permissions English Poll lexicon entries
+ * The permissions Dutch Poll lexicon entries
  *
  * @package polls
  * @subpackage lexion

@@ -1,12 +1,12 @@
 ﻿<?php
 /**
- * The default English Poll lexicon entries
+ * The default Dutch Poll lexicon entries
  *
  * @package polls
  * @subpackage lexion
- * @language: English
- * @author: Bert Oost
- * @translation-date: 2011-01-20
+ * @language: Dutch
+ * @author: bueno
+ * @translation-date: 2011-11-11
  */
 
 $_lang['polls'] = "Polls";

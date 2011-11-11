@@ -1,12 +1,12 @@
 ﻿<?php
 /**
- * The latest poll English Poll lexicon entries
+ * The latest poll Dutch Poll lexicon entries
  *
  * @package polls
  * @subpackage lexion
- * @language: English
- * @author: Bert Oost
- * @translation-date: 2010-12-21
+ * @language: Dutch
+ * @author: bueno
+ * @translation-date: 2011-11-11
  */
 
 $_lang['polls.totalvotes'] = "Totaal aantal stemmen: [[+num]]";
