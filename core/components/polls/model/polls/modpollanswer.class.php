@@ -9,7 +9,7 @@ class modPollAnswer extends xPDOSimpleObject
 	 */
 	public function getVotesPercent($total) {
 		
-		$percent = number_format(($this->votes / $total) * 100, 1, '.', '');
+		$percent = ($total > 0) ? number_format(($this->votes / $total) * 100, 1, '.', ''): 0;
 		
 		return $percent;
 	}
