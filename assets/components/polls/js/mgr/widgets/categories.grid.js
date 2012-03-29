@@ -13,41 +13,39 @@ Polls.grid.Categories = function(config) {
 		anchor: '97%',
 		autoExpandColumn: 'name',
 		columns: [{
-				header: _('polls.categoryid'),
-				dataIndex: 'id',
-				sortable: true,
-				width: 15
-			},{
-				header: _('polls.category'),
-				dataIndex: 'name',
-				sortable: true,
-				editor: { xtype: 'textfield' }
-			}
-		],
+			header: _('polls.categoryid'),
+			dataIndex: 'id',
+			sortable: true,
+			width: 15
+		},{
+			header: _('polls.category'),
+			dataIndex: 'name',
+			sortable: true,
+			editor: { xtype: 'textfield' }
+		}],
 		tbar: [{
-				text: _('polls.categories.create'),
-				handler: {
-					xtype: 'category-window-create',
-					blankValues: true
-				}
-			},{
-				xtype: 'tbfill'
-			},{
-				xtype: 'textfield',
-				id: 'categories-search-filter',
-				emptyText: _('polls.search'),
-				listeners: {
-					'change': { fn: this.search, scope:this },
-					'render': { fn: function(tf) {
-							tf.getEl().addKeyListener(Ext.EventObject.ENTER, function() {
-								this.search(tf);
-							}, this);
-						},
-						scope: this
-					}
+			text: _('polls.categories.create'),
+			handler: {
+				xtype: 'category-window-create',
+				blankValues: true
+			}
+		},{
+			xtype: 'tbfill'
+		},{
+			xtype: 'textfield',
+			id: 'categories-search-filter',
+			emptyText: _('polls.search'),
+			listeners: {
+				'change': { fn: this.search, scope:this },
+				'render': { fn: function(tf) {
+						tf.getEl().addKeyListener(Ext.EventObject.ENTER, function() {
+							this.search(tf);
+						}, this);
+					},
+					scope: this
 				}
 			}
-		]
+		}]
     });
 	
     Polls.grid.Categories.superclass.constructor.call(this, config);
@@ -95,13 +93,12 @@ Polls.window.CreateCategory = function(config) {
 			action: 'mgr/categories/create'
 		},
 		fields: [{
-				xtype: 'textfield',
-				fieldLabel: _('polls.category'),
-				name: 'name',
-				width: 200,
-				allowBlank: false
-			}
-		]
+			xtype: 'textfield',
+			fieldLabel: _('polls.category'),
+			name: 'name',
+			anchor: '100%',
+			allowBlank: false
+		}]
     });
 	
     Polls.window.CreateCategory.superclass.constructor.call(this, config);

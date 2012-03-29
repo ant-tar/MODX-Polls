@@ -1,5 +1,13 @@
 ﻿Changelog for Polls.
 
+Polls 1.2-pl (March 16, 2012)
+====================================
+- Removed access policies because of unfixable failures
+- Changed the default values for answer fields: votes & sort_order
+- Fixed: Manager UI fixes for MODX 2.2
+- Fixed: division by zero error logs (Thanks to Rayden *github*)
+
+
 Polls 1.1-rc2 (January 22, 2011)
 ====================================
 - Fixed: policy context access added

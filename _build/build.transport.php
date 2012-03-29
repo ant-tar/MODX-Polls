@@ -12,9 +12,9 @@ $tstart = $mtime;
 set_time_limit(0);
 
 define('PKG_NAME', 'Polls');
-define('PKG_NAME_LOWER', 'polls');
-define('PKG_VERSION', '1.1');
-define('PKG_RELEASE', 'rc2');
+define('PKG_NAME_LOWER', strtolower(PKG_NAME));
+define('PKG_VERSION', '1.2.0');
+define('PKG_RELEASE', 'pl');
 
 /* override with your own defines here (see build.config.sample.php) */
 require_once dirname(__FILE__) . '/build.config.php';
@@ -38,7 +38,7 @@ unset($root);
 $modx= new modX();
 $modx->initialize('mgr');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
-$modx->setLogTarget('HTML');
+$modx->setLogTarget('ECHO');
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
@@ -112,51 +112,6 @@ $vehicle->resolve('file',array(
 ));
 $builder->putVehicle($vehicle);
 
-/* load lexicon strings */
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in lexicon...');
-$builder->buildLexicon($sources['lexicon']);
-
-/* package in default access policy */
-$attributes = array (
-    xPDOTransport::PRESERVE_KEYS => false,
-    xPDOTransport::UNIQUE_KEY => array('name'),
-    xPDOTransport::UPDATE_OBJECT => true,
-);
-$policies = include $sources['data'].'transport.policies.php';
-if (!is_array($policies)) { $modx->log(modX::LOG_LEVEL_FATAL,'Adding policies failed.'); }
-foreach ($policies as $policy) {
-    $vehicle = $builder->createVehicle($policy,$attributes);
-    $builder->putVehicle($vehicle);
-}
-$modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($policies).' Access Policies.'); flush();
-unset($policies,$policy,$attributes);
-
-/* package in default access policy template */
-$templates = include dirname(__FILE__).'/data/transport.policytemplates.php';
-$attributes = array (
-    xPDOTransport::PRESERVE_KEYS => false,
-    xPDOTransport::UNIQUE_KEY => array('name'),
-    xPDOTransport::UPDATE_OBJECT => true,
-    xPDOTransport::RELATED_OBJECTS => true,
-    xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
-        'Permissions' => array (
-            xPDOTransport::PRESERVE_KEYS => false,
-            xPDOTransport::UPDATE_OBJECT => true,
-            xPDOTransport::UNIQUE_KEY => array ('template','name'),
-        ),
-    )
-);
-if (is_array($templates)) {
-    foreach ($templates as $template) {
-        $vehicle = $builder->createVehicle($template,$attributes);
-        $builder->putVehicle($vehicle);
-    }
-    $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($templates).' Access Policy Templates.'); flush();
-} else {
-    $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in Access Policy Templates.');
-}
-unset ($templates,$template,$idx,$ct,$attributes);
-
 /* load menu */
 $modx->log(modX::LOG_LEVEL_INFO, 'Packaging in menu...');
 $menu = include $sources['data'].'transport.menu.php';
@@ -177,9 +132,6 @@ $vehicle= $builder->createVehicle($menu,array (
 $modx->log(modX::LOG_LEVEL_INFO,'Adding in PHP resolvers...');
 $vehicle->resolve('php',array(
     'source' => $sources['resolvers'] . 'tables.resolver.php',
-));
-$vehicle->resolve('php',array(
-    'source' => $sources['resolvers'] . 'policy.resolver.php',
 ));
 $builder->putVehicle($vehicle);
 unset($vehicle,$menu);

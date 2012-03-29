@@ -22,8 +22,8 @@
 	<object class="modPollAnswer" table="polls_answers" extends="xPDOSimpleObject">
 		<field key="question" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
 		<field key="answer" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
-		<field key="votes" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" />
-		<field key="sort_order" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" />
+		<field key="votes" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" default="0" />
+		<field key="sort_order" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" defaukt="0" />
 		
 		<aggregate alias="Question" class="modPollQuestion" local="question" foreign="id" cardinality="one" owner="foreign" />
 		<composite alias="Logs" class="modPollLog" local="id" foreign="answer" cardinality="many" owner="local" />

@@ -18,10 +18,14 @@ if ($object->xpdo) {
             $manager->createObjectContainer('modPollQuestion');
             $manager->createObjectContainer('modPollAnswer');
             $manager->createObjectContainer('modPollLog');
-
-            break;
+			
+			// to change the default values (since v1.2-pl)
+			$manager->alterField('modPollAnswer', 'votes');
+			$manager->alterField('modPollAnswer', 'sort_order');
+		break;
+		
         case xPDOTransport::ACTION_UPGRADE:
-            break;
+		break;
     }
 }
 return true;

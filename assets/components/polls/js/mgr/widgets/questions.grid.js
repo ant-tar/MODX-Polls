@@ -185,19 +185,23 @@ Polls.window.CreateQuestion = function(config) {
 			action: 'mgr/questions/create'
 		},
 		fields: [{
+			layout: 'form',
+			cls: 'modx-panel',
+			autoHeight: true,
+			labelWidth: 100,
+			defaults: { anchor: '100%' },
+			items: [{
 				xtype: 'textfield',
 				fieldLabel: _('polls.question'),
 				name: 'question',
-				width: 200,
 				allowBlank: false
 			},{
 				xtype: 'polls-combo-categories',
 				fieldLabel: _('polls.category'),
 				name: 'category',
-				width: 200,
 				allowBlank: true
-			}
-		]
+			}]
+		}]
     });
 	
     Polls.window.CreateQuestion.superclass.constructor.call(this, config);
@@ -216,44 +220,66 @@ Polls.window.UpdateQuestion = function(config) {
 		baseParams: {
             action: 'mgr/questions/update'
         },
+		width: 600,
 		fields: [{
-				xtype: 'hidden',
-				name: 'id'
-			},{
-				xtype: 'textfield',
-				fieldLabel: _('polls.question'),
-				name: 'question',
-				width: 200,
-				allowBlank: false
-			},{
-				xtype: 'polls-combo-categories',
-				fieldLabel: _('polls.category'),
-				name: 'category',
-				width: 200,
-				allowBlank: true
-			},{
-				xtype: 'xdatetime',
-				fieldLabel: _('polls.publishdate'),
-				name: 'publishdate',
-				width: 200,
-				dateFormat: 'd-m-Y', 
-				timeFormat: 'H:i',
-				allowBlank: true
-			},{
-				xtype: 'xdatetime',
-				fieldLabel: _('polls.unpublishdate'),
-				name: 'unpublishdate',
-				width: 200,
-				dateFormat: 'd-m-Y', 
-				timeFormat: 'H:i',
-				allowBlank: true
-			},{
-				xtype: 'checkbox',
-				fieldLabel: _('polls.hide'),
-				name: 'hide',
-				allowBlank: true
-			}
-		]
+			layout: 'form',
+			cls: 'modx-panel',
+			autoHeight: true,
+			labelWidth: 100,
+			items: [{
+				layout: 'column',
+				border: false,
+				items: [{
+					columnWidth: .5,
+					border: false,
+					layout: 'form',
+					defaults: { anchor: '100%' },
+					items: [{
+						xtype: 'hidden',
+						name: 'id'
+					},{
+						xtype: 'textfield',
+						fieldLabel: _('polls.question'),
+						name: 'question',
+						allowBlank: false
+					},{
+						xtype: 'polls-combo-categories',
+						fieldLabel: _('polls.category'),
+						name: 'category',
+						allowBlank: true
+					}]
+				},{
+					columnWidth: .5,
+					border: false,
+					layout: 'form',
+					defaults: { anchor: '100%' },
+					items: [{
+						xtype: 'xdatetime',
+						fieldLabel: _('polls.publishdate'),
+						name: 'publishdate',
+						dateFormat: 'd-m-Y', 
+						timeFormat: 'H:i',
+						allowBlank: true
+					},{
+						xtype: 'xdatetime',
+						fieldLabel: _('polls.unpublishdate'),
+						name: 'unpublishdate',
+						dateFormat: 'd-m-Y', 
+						timeFormat: 'H:i',
+						allowBlank: true
+					},{
+						xtype: 'checkbox',
+						boxLabel: _('polls.hide'),
+						name: 'hide',
+						allowBlank: true
+					}]
+				}]
+			}]
+		}]
+		
+		/*
+		fields: [,
+		]*/
     });
 	
     Polls.window.UpdateQuestion.superclass.constructor.call(this, config);
