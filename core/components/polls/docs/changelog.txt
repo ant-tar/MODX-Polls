@@ -1,5 +1,14 @@
 ﻿Changelog for Polls.
 
+Polls 1.3.0-pl (April 29, 2012)
+====================================
+- Added new functionality: list all previous polls with PollsPrevious (#15 @ github)
+- Removed polls permission (because of some troubles)
+- Fixed couple of notice errors inside processorrs which are never seen before
+- Making PollsLatest &category parameter compatible with given name instead of ID only
+- Fixed issues with MODX 2.2.1
+
+
 Polls 1.2-pl (March 16, 2012)
 ====================================
 - Removed access policies because of unfixable failures

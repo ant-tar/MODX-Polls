@@ -13,7 +13,7 @@ set_time_limit(0);
 
 define('PKG_NAME', 'Polls');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
-define('PKG_VERSION', '1.2.0');
+define('PKG_VERSION', '1.3.0');
 define('PKG_RELEASE', 'pl');
 
 /* override with your own defines here (see build.config.sample.php) */
@@ -26,8 +26,8 @@ $sources = array(
     'build' => $root . '_build/',
     'resolvers' => $root . '_build/resolvers/',
     'data' => $root . '_build/data/',
-	'permissions' => $root . '_build/data/permissions/',
-    'chunks' => $root.'core/components/'.PKG_NAME_LOWER.'/chunks/',
+    'snippets' => $root.'core/components/'.PKG_NAME_LOWER.'/elements/snippets/',
+    'chunks' => $root.'core/components/'.PKG_NAME_LOWER.'/elements/chunks/',
     'lexicon' => $root . 'core/components/'.PKG_NAME_LOWER.'/lexicon/',
     'docs' => $root.'core/components/'.PKG_NAME_LOWER.'/docs/',
     'source_assets' => $root.'assets/components/'.PKG_NAME_LOWER,

@@ -39,6 +39,6 @@ foreach($answers as $answer) {
     $list[] = $oneItem;
 }
 
-return $this->outputArray($list, $count);
+return $this->outputArray($list, count($answers));
 
 ?>

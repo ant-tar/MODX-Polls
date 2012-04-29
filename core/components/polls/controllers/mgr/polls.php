@@ -6,7 +6,7 @@
  * @subpackage controllers
  */
 
-$modx->regClientStartupScript($polls->config['manager_url'].'assets/modext/util/datetime.js');
+$modx->regClientStartupScript($modx->config['manager_url'].'assets/modext/util/datetime.js');
 $modx->regClientStartupScript($polls->config['jsUrl'].'mgr/combos.js');
 $modx->regClientStartupScript($polls->config['jsUrl'].'mgr/widgets/questions.grid.js');
 $modx->regClientStartupScript($polls->config['jsUrl'].'mgr/widgets/categories.grid.js');

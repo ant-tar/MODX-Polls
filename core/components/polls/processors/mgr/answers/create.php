@@ -12,6 +12,6 @@ if($answer->save() == false) {
 }
 
 
-return $modx->error->success('', $category);
+return $modx->error->success('', $answer);
 
 ?>

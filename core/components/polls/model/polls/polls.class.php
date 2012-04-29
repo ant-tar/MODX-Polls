@@ -15,10 +15,8 @@ class Polls {
     function __construct(modX &$modx, array $config=array()) {
 		$this->modx =& $modx;
 		
-		$namespace = $this->modx->getObject('modNamespace', 'polls');
-		
-		$basePath = $namespace->get('path');
-		$assetsUrl = $this->modx->getOption('assets_url').'components/polls/';
+		$basePath = $this->modx->getOption('polls.core_path',$config,$this->modx->getOption('core_path').'components/polls/');
+		$assetsUrl = $this->modx->getOption('polls.assets_url',$config,$this->modx->getOption('assets_url').'components/polls/');
 		
 		$this->config = array_merge(array(
 			'basePath' => $basePath,

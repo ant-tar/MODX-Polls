@@ -25,4 +25,4 @@ if($answer->save() == false) {
     return $modx->error->failure($modx->lexicon('polls.error.save'));
 }
 
-return $modx->error->success('', $poll);
+return $modx->error->success('', $answer);
