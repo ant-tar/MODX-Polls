@@ -13,7 +13,8 @@ if ($object->xpdo) {
             $modx->addPackage('polls', $modelPath);
 
             $manager = $modx->getManager();
-
+			
+			$modx->setLogLevel(modX::LOG_LEVEL_ERROR);
             $manager->createObjectContainer('modPollCategory');
             $manager->createObjectContainer('modPollQuestion');
             $manager->createObjectContainer('modPollAnswer');
@@ -22,6 +23,7 @@ if ($object->xpdo) {
 			// to change the default values (since v1.2-pl)
 			$manager->alterField('modPollAnswer', 'votes');
 			$manager->alterField('modPollAnswer', 'sort_order');
+			$modx->setLogLevel(modX::LOG_LEVEL_INFO);
 		break;
 		
         case xPDOTransport::ACTION_UPGRADE:

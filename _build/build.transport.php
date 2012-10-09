@@ -13,7 +13,7 @@ set_time_limit(0);
 
 define('PKG_NAME', 'Polls');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
-define('PKG_VERSION', '1.3.0');
+define('PKG_VERSION', '1.3.1');
 define('PKG_RELEASE', 'pl');
 
 /* override with your own defines here (see build.config.sample.php) */
@@ -27,6 +27,7 @@ $sources = array(
     'resolvers' => $root . '_build/resolvers/',
     'data' => $root . '_build/data/',
     'snippets' => $root.'core/components/'.PKG_NAME_LOWER.'/elements/snippets/',
+    'plugins' => $root.'core/components/'.PKG_NAME_LOWER.'/elements/plugins/',
     'chunks' => $root.'core/components/'.PKG_NAME_LOWER.'/elements/chunks/',
     'lexicon' => $root . 'core/components/'.PKG_NAME_LOWER.'/lexicon/',
     'docs' => $root.'core/components/'.PKG_NAME_LOWER.'/docs/',
@@ -38,7 +39,7 @@ unset($root);
 $modx= new modX();
 $modx->initialize('mgr');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
-$modx->setLogTarget('ECHO');
+$modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
@@ -61,6 +62,37 @@ $modx->log(modX::LOG_LEVEL_INFO, 'Packaging in chunks...');
 $chunks = include $sources['data'].'transport.chunks.php';
 if (empty($chunks)) $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in chunks.');
 $category->addMany($chunks);
+
+/* add tv plugin */
+$plugin= $modx->newObject('modPlugin');
+$plugin->fromArray(array(
+    'id' => 1,
+    'name' => 'PollsCustomTVType',
+    'description' => 'This plugin will create the Polls custom TV input type',
+    'plugincode' => getSnippetContent($sources['plugins'] . 'plugin.pollscustomtvtype.php'),
+),'',true,true);
+$events = include $sources['data'].'events/events.pollscustomtvtype.php';
+if (is_array($events) && !empty($events)) {
+    $modx->log(modX::LOG_LEVEL_INFO,'Added '.count($events).' events to PollsCustomTVType plugin.');
+    $plugin->addMany($events);
+}
+unset($events);
+$attributes = array (
+    xPDOTransport::PRESERVE_KEYS => false,
+    xPDOTransport::UPDATE_OBJECT => true,
+    xPDOTransport::UNIQUE_KEY => 'name',
+    xPDOTransport::RELATED_OBJECTS => true,
+    xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
+        'PluginEvents' => array(
+            xPDOTransport::PRESERVE_KEYS => true,
+            xPDOTransport::UPDATE_OBJECT => false,
+            xPDOTransport::UNIQUE_KEY => array('pluginid','event'),
+        ),
+    ),
+);
+$vehicle = $builder->createVehicle($plugin, $attributes);
+$builder->putVehicle($vehicle);
+unset($vehicle,$attributes,$plugin);
 
 /* create category vehicle */
 $attr = array(
@@ -155,6 +187,6 @@ $tend= $mtime;
 $totalTime= ($tend - $tstart);
 $totalTime= sprintf("%2.4f s", $totalTime);
 
-$modx->log(modX::LOG_LEVEL_INFO,"\n<br />Package Built.<br />\nExecution time: {$totalTime}\n");
+$modx->log(modX::LOG_LEVEL_INFO,"Package Built. Execution time: {$totalTime}");
 
 exit();

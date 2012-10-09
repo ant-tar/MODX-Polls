@@ -1,7 +1,12 @@
 <?php
+/**
+ * @package polls
+ */
 $xpdo_meta_map['modPollCategory']= array (
   'package' => 'polls',
+  'version' => NULL,
   'table' => 'polls_categories',
+  'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
     'name' => NULL,

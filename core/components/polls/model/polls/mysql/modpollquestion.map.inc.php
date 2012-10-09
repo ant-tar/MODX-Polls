@@ -1,7 +1,12 @@
 <?php
+/**
+ * @package polls
+ */
 $xpdo_meta_map['modPollQuestion']= array (
   'package' => 'polls',
+  'version' => NULL,
   'table' => 'polls_questions',
+  'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
     'category' => NULL,
@@ -49,22 +54,10 @@ $xpdo_meta_map['modPollQuestion']= array (
     array (
       'dbtype' => 'int',
       'precision' => '1',
-	  'attributes' => 'unsigned',
       'phptype' => 'boolean',
       'null' => false,
       'default' => 0,
       'index' => 'index',
-    ),
-  ),
-  'aggregates' => 
-  array (
-    'Category' => 
-    array (
-      'class' => 'modPollCategory',
-      'local' => 'category',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
     ),
   ),
   'composites' => 
@@ -84,6 +77,17 @@ $xpdo_meta_map['modPollQuestion']= array (
       'foreign' => 'question',
       'cardinality' => 'many',
       'owner' => 'local',
+    ),
+  ),
+  'aggregates' => 
+  array (
+    'Category' => 
+    array (
+      'class' => 'modPollCategory',
+      'local' => 'category',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
     ),
   ),
 );

@@ -1,7 +1,12 @@
 <?php
+/**
+ * @package polls
+ */
 $xpdo_meta_map['modPollAnswer']= array (
   'package' => 'polls',
+  'version' => NULL,
   'table' => 'polls_answers',
+  'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
     'question' => NULL,
@@ -45,17 +50,6 @@ $xpdo_meta_map['modPollAnswer']= array (
       'null' => false,
     ),
   ),
-  'aggregates' => 
-  array (
-    'Question' => 
-    array (
-      'class' => 'modPollQuestion',
-      'local' => 'question',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
-    ),
-  ),
   'composites' => 
   array (
     'Logs' => 
@@ -65,6 +59,17 @@ $xpdo_meta_map['modPollAnswer']= array (
       'foreign' => 'answer',
       'cardinality' => 'many',
       'owner' => 'local',
+    ),
+  ),
+  'aggregates' => 
+  array (
+    'Question' => 
+    array (
+      'class' => 'modPollQuestion',
+      'local' => 'question',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
     ),
   ),
 );

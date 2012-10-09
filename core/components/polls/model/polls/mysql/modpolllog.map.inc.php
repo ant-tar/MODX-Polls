@@ -1,7 +1,12 @@
 <?php
+/**
+ * @package polls
+ */
 $xpdo_meta_map['modPollLog']= array (
   'package' => 'polls',
+  'version' => NULL,
   'table' => 'polls_logs',
+  'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
     'question' => NULL,
