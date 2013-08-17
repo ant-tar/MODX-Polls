@@ -89,7 +89,7 @@ if(!empty($id) && is_numeric($id)) {
         }
         
         // build resource url for results if not has voted, because then the results are showed
-        if(!empty($resultResource) && is_numeric($resultResource) && $resultResource > 0 && !$latest->hasVoted()) {
+        if(!empty($resultResource) && is_numeric($resultResource) && $resultResource > 0 && !$poll->hasVoted()) {
             
             $resource = $modx->getObject('modResource', $resultResource);
             
