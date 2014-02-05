@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The TV render English Poll lexicon entries
  *

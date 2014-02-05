@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The default lexicon entries
  *
