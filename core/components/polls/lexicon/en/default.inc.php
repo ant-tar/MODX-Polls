@@ -37,7 +37,7 @@ $_lang['polls.questions.duplicate_confirm'] = "Are you sure you want to duplicat
 $_lang['polls.questions.duplicate_error'] = "Failed duplicating question and/or answers. Try it again!";
 $_lang['polls.questions.update'] = "Update Question";
 $_lang['polls.questions.remove'] = "Remove Question";
-$_lang['polls.questions.remove_confirm'] = "Are you sure you want to remove this question and all the answers and stats?";
+$_lang['polls.questions.remove_confirm'] = "This action will remove all associated data, including answers and stats. Are you sure you want to remove this question?";
 $_lang['polls.questions.error_remove'] = "Failed to remove the question. Try it again!";
 
 $_lang['polls.question.update'] = "Update question";
