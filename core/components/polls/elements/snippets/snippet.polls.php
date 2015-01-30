@@ -68,28 +68,70 @@ if(!empty($id) && is_numeric($id)) {
         
         $category = $poll->getOne('Category');
         $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
-          
-        $answers = $poll->getMany('Answers');
+       
+
+
+$answers = $poll->getMany('Answers');
+
+
+       
+
         $answersOutput = '';
+$i=0;
         foreach($answers as $idx => $answer) {
             $answerParams = array_merge(
                 $answer->toArray(), array(
                 'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
     	        'idx' => $idx
             ));
-            $answersOutput .= $modx->getChunk((!$poll->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
+// Create a Multidimensional Array from the returned Answers
+$answerArray[$i]=$answerParams;
+$i++;
+
+       //     $answersOutput .= $modx->getChunk((!$poll->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
         }
-        
+
+function subval_sort($a,$subkey) {
+	foreach($a as $k=>$v) {
+		$b[$k] = strtolower($v[$subkey]);
+	}
+	asort($b);
+	foreach($b as $key=>$val) {
+		$c[] = $a[$key];
+	}
+
+	return $c;
+}
+$answerArray = subval_sort($answerArray,'sort-order');       
+//print_r($answerArray);
+
+// build new output array
+$x=0;
+foreach ($answerArray as $idx => $answer) {
+    $answersOutput .= $modx->getChunk((!$poll->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerArray[$x]);
+$x++;
+ }
+
+
+
+
+
+
+
+
+
         $placeholders['answers'] = $answersOutput;
+
+
         
         if($poll->hasVoted()) {
             
-            $vote = $latest->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
+            $vote = $poll->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
             $placeholders['logdate'] = $vote->get('logdate');
         }
         
         // build resource url for results if not has voted, because then the results are showed
-        if(!empty($resultResource) && is_numeric($resultResource) && $resultResource > 0 && !$poll->hasVoted()) {
+        if(!empty($resultResource) && is_numeric($resultResource) && $resultResource > 0 && !$latest->hasVoted()) {
             
             $resource = $modx->getObject('modResource', $resultResource);
             
@@ -104,5 +146,3 @@ if(!empty($id) && is_numeric($id)) {
 }
 
 return $output;
-
-?>
