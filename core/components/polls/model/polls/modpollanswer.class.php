@@ -43,10 +43,12 @@ class modPollAnswer extends xPDOSimpleObject
 	 * @return boolean
 	 */
 	private function logVote() {
+		$user = $this->xpdo->getUser();
 		
 		$vote = $this->xpdo->newObject('modPollLog');
 		$vote->set('question', $this->question);
 		$vote->set('ipaddress', $_SERVER['REMOTE_ADDR']);
+		$vote->set('user', $user->get('id'));
 		$vote->set('logdate', date('Y-m-d H:i:s'));
 		$vote->addOne($this);
 		
@@ -59,16 +61,29 @@ class modPollAnswer extends xPDOSimpleObject
 	}
 	
 	/**
-	 * Check if current IP address has voted on the current answer/question
+	 * Check if current IP address or logged in user has voted on the current answer/question
 	 *
 	 * @return boolean
 	 */
-	private function hasVoted() {
+	private function hasVoted($uniqueBy) {
 		
-		$vote = $this->getOne('Logs', array( 
-			'ipaddress:=' => $_SERVER['REMOTE_ADDR'],
-			'answer' => $this->id
-		));
+		switch ($uniqueBy) {
+			case 'user':
+				//retrieve userobject
+				$user = $this->xpdo->getUser();
+				
+				$vote = $this->getOne('Logs', array( 
+					'user:=' => $user->get('id'),
+					'answer' => $this->id
+				));
+				break;
+			default:
+				$vote = $this->getOne('Logs', array( 
+					'ipaddress:=' => $_SERVER['REMOTE_ADDR'],
+					'answer' => $this->id
+				));
+				break;
+		}
 		
 		if(!empty($vote)) {
 			

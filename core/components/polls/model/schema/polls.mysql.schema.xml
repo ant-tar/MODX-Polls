@@ -33,6 +33,7 @@
 		<field key="question" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
 		<field key="answer" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
 		<field key="ipaddress" dbtype="varchar" precision="50" phptype="string" null="false" index="index" />
+		<field key="user" dbtype="varchar" precision="50" phptype="string" null="false" index="index" />
 		<field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
 		
 		<aggregate alias="Question" class="modPollQuestion" local="answer" foreign="id" cardinality="one" owner="foreign" />

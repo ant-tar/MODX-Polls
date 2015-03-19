@@ -26,6 +26,11 @@
  *
  * resultResource - (Opt) when set to a resource id, this resource will be used to show the poll results
  * resultLinkVar - (Opt) when using resultResource, this is the paramatername the snippet is looking for
+ *
+ * OPTIONS:
+ *
+ * uniqueBy - (Opt) defauls to ip, when set to user will limit voting to logged in users instead of ip-address
+ *
  */
 $polls = $modx->getService('polls','Polls',$modx->getOption('polls.core_path',null,$modx->getOption('core_path').'components/polls/').'model/polls/',$scriptProperties);
 if (!($polls instanceof Polls)) return '';
@@ -42,6 +47,7 @@ $sortby = $modx->getOption('sortby', $scriptProperties, 'id');
 $sortdir = $modx->getOption('sortdir', $scriptProperties, 'DESC');
 $resultResource = $modx->getOption('resultResource', $scriptProperties, null);
 $resultLinkVar = $modx->getOption('resultLinkVar', $scriptProperties, 'poll');
+$uniqueBy = $modx->getOption('uniqueBy', $scriptProperties, 'ip');
 
 // start getting latest poll
 $c = $modx->newQuery('modPollQuestion');
@@ -91,19 +97,29 @@ if(!empty($latest)) {
 	'idx' => $idx
       )
     );
-    $answersOutput .= $modx->getChunk((!$latest->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
+    $answersOutput .= $modx->getChunk((!$latest->hasVoted($uniqueBy) ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
   }
   
   $placeholders['answers'] = $answersOutput;
   
-  if($latest->hasVoted()) {
+  if($latest->hasVoted($uniqueBy)) {
+	  
+	switch ($uniqueBy) {
+	    case 'user':
+	    	$user = $modx->getUser();
+	    	$vote = $latest->getOne('Logs', array('user:=' => $user->get(id)));
+			$placeholders['logdate'] = $vote->get('logdate');
+	    	break;
+	    default:
+	    	$vote = $latest->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
+			$placeholders['logdate'] = $vote->get('logdate');
+	    	break;
+	}  
     
-    $vote = $latest->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
-    $placeholders['logdate'] = $vote->get('logdate');
   }
   
   // build resource url for results if not has voted, because then the results are showed
-  if(!empty($resultResource) && is_numeric($resultResource) && $resultResource > 0 && !$latest->hasVoted()) {
+  if(!empty($resultResource) && is_numeric($resultResource) && $resultResource > 0 && !$latest->hasVoted($uniqueBy)) {
     
     $resource = $modx->getObject('modResource', $resultResource);
     
@@ -113,7 +129,7 @@ if(!empty($latest)) {
     }
   }
   
-  $output = $modx->getChunk((!$latest->hasVoted() ? $tplVote : $tplResult), $placeholders);
+  $output = $modx->getChunk((!$latest->hasVoted($uniqueBy) ? $tplVote : $tplResult), $placeholders);
   
   return $output;
 }
