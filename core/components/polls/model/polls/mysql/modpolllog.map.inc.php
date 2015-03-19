@@ -12,6 +12,7 @@ $xpdo_meta_map['modPollLog']= array (
     'question' => NULL,
     'answer' => NULL,
     'ipaddress' => NULL,
+    'user' => NULL,
     'logdate' => NULL,
   ),
   'fieldMeta' => 
@@ -35,6 +36,14 @@ $xpdo_meta_map['modPollLog']= array (
       'index' => 'index',
     ),
     'ipaddress' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '50',
+      'phptype' => 'string',
+      'null' => false,
+      'index' => 'index',
+    ),
+    'user' => 
     array (
       'dbtype' => 'varchar',
       'precision' => '50',

@@ -47,16 +47,29 @@ class modPollQuestion extends xPDOSimpleObject
 	}
 	
 	/**
-	 * Checks if current visitor already has voted yet
+	 * Checks if current visitor already has voted yet (based on ipaddress or userid)
 	 *
 	 * @return boolean
 	 */
-	public function hasVoted() {
+	public function hasVoted($uniqueBy) {
 		
-		$vote = $this->getOne('Logs', array(
-			'ipaddress:=' => $_SERVER['REMOTE_ADDR'],
-			'question' => $this->id
-		));
+		switch ($uniqueBy) {
+			case 'user':
+				//retrieve userobject
+				$user = $this->xpdo->getUser();
+				
+				$vote = $this->getOne('Logs', array( 
+					'user:=' => $user->get('id'),
+					'question' => $this->id
+				));
+				break;
+			default:
+				$vote = $this->getOne('Logs', array(
+					'ipaddress:=' => $_SERVER['REMOTE_ADDR'],
+					'question' => $this->id
+				));
+				break;
+		}
 		
 		if(!empty($vote)) {
 			
