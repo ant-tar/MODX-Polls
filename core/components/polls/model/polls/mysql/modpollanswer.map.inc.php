@@ -1,7 +1,4 @@
 <?php
-/**
- * @package polls
- */
 $xpdo_meta_map['modPollAnswer']= array (
   'package' => 'polls',
   'version' => NULL,
@@ -11,8 +8,8 @@ $xpdo_meta_map['modPollAnswer']= array (
   array (
     'question' => NULL,
     'answer' => NULL,
-    'votes' => NULL,
-    'sort_order' => NULL,
+    'votes' => 0,
+    'sort_order' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -40,6 +37,7 @@ $xpdo_meta_map['modPollAnswer']= array (
       'attributes' => 'unsigned',
       'phptype' => 'integer',
       'null' => false,
+      'default' => 0,
     ),
     'sort_order' => 
     array (
@@ -48,6 +46,7 @@ $xpdo_meta_map['modPollAnswer']= array (
       'attributes' => 'unsigned',
       'phptype' => 'integer',
       'null' => false,
+      'default' => 0,
     ),
   ),
   'composites' => 

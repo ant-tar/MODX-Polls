@@ -1,7 +1,4 @@
 <?php
-/**
- * @package polls
- */
 $xpdo_meta_map['modPollQuestion']= array (
   'package' => 'polls',
   'version' => NULL,
@@ -54,6 +51,7 @@ $xpdo_meta_map['modPollQuestion']= array (
     array (
       'dbtype' => 'int',
       'precision' => '1',
+      'attributes' => 'unsigned',
       'phptype' => 'boolean',
       'null' => false,
       'default' => 0,
