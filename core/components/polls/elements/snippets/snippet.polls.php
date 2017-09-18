@@ -70,21 +70,34 @@ if(!empty($id) && is_numeric($id)) {
         $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
           
         $answers = $poll->getMany('Answers');
+
+        // get best positive answer
+        $d = $modx->newQuery('modPollAnswer');
+        $d->sortby('votes','DESC');
+        $d->sortby('sort_order','DESC');
+        $d->sortby('id','DESC');
+        $d->where(array(
+            'question'=>$poll->id
+        ));
+        $best_ans = $modx->getObject('modPollAnswer',$d);
+        if($best_ans) $bestAnswer = $best_ans->id;
+
         $answersOutput = '';
         foreach($answers as $idx => $answer) {
             $answerParams = array_merge(
                 $answer->toArray(), array(
                 'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
+    	        'best_answer'=>$bestAnswer,
     	        'idx' => $idx
             ));
             $answersOutput .= $modx->getChunk((!$poll->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
         }
         
         $placeholders['answers'] = $answersOutput;
-        
+
         if($poll->hasVoted()) {
             
-            $vote = $latest->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
+            $vote = $poll->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
             $placeholders['logdate'] = $vote->get('logdate');
         }
         
@@ -104,5 +117,3 @@ if(!empty($id) && is_numeric($id)) {
 }
 
 return $output;
-
-?>

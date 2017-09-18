@@ -25,11 +25,10 @@ class modPollQuestion extends xPDOSimpleObject
 	 * @return boolean
 	 */
 	public function vote($properties=array()) {
-		
 		$submitVar = $this->xpdo->getOption('submitVar', $properties, 'pollVote');
 		$answerVar = $this->xpdo->getOption('answerVar', $properties, 'answer');
+		$comment = $this->xpdo->getOption('comment', $_POST);
 		//$postHooks = $this->xpdo->getOption('postHooks', $properties, ''); // implementation in later version
-		
 		if(!empty($submitVar) && isset($_POST[$submitVar])) {
 			
 			$answer = (isset($_POST[$answerVar]) && is_numeric($_POST[$answerVar])) ? (integer) $_POST[$answerVar] : false;
@@ -37,8 +36,8 @@ class modPollQuestion extends xPDOSimpleObject
 			if($answer !== false) {
 				
 				$answer = $this->getOne('Answers', $answer);
-				$answer->addVote();
-				
+				$answer->addVote($comment);
+
 				return true;
 			}
 		}

@@ -8,6 +8,7 @@ $xpdo_meta_map['modPollLog']= array (
   array (
     'question' => NULL,
     'answer' => NULL,
+    'comment' => NULL,
     'ipaddress' => NULL,
     'logdate' => NULL,
   ),
@@ -28,6 +29,14 @@ $xpdo_meta_map['modPollLog']= array (
       'precision' => '11',
       'attributes' => 'unsigned',
       'phptype' => 'integer',
+      'null' => false,
+      'index' => 'index',
+    ),
+    'comment' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '1024',
+      'phptype' => 'string',
       'null' => false,
       'index' => 'index',
     ),

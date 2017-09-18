@@ -32,6 +32,7 @@
 	<object class="modPollLog" table="polls_logs" extends="xPDOSimpleObject">
 		<field key="question" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
 		<field key="answer" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
+		<field key="comment" dbtype="varchar" precision="1024" phptype="string" null="false" index="index" />
 		<field key="ipaddress" dbtype="varchar" precision="50" phptype="string" null="false" index="index" />
 		<field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
 		

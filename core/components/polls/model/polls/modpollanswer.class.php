@@ -19,7 +19,7 @@ class modPollAnswer extends xPDOSimpleObject
 	 *
 	 * @return boolean
 	 */
-	public function addVote() {
+	public function addVote($comment = null) {
 		
 		if(!$this->hasVoted()) {
 		
@@ -28,7 +28,7 @@ class modPollAnswer extends xPDOSimpleObject
 			
 			if($this->save()) {
 				
-				$this->logVote();
+				$this->logVote($comment);
 				
 				return true;
 			}
@@ -42,9 +42,10 @@ class modPollAnswer extends xPDOSimpleObject
 	 *
 	 * @return boolean
 	 */
-	private function logVote() {
+	private function logVote($comment = false) {
 		
 		$vote = $this->xpdo->newObject('modPollLog');
+		if($comment) $vote->set('comment',$comment);
 		$vote->set('question', $this->question);
 		$vote->set('ipaddress', $_SERVER['REMOTE_ADDR']);
 		$vote->set('logdate', date('Y-m-d H:i:s'));
