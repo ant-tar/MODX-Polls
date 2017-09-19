@@ -17,7 +17,7 @@ if(empty($_DATA['id'])) {
 	return $modx->error->failure($modx->lexicon('polls.error.update'));
 }
 
-$poll = $modx->getObject('modPollQuestion', $_DATA['id']);
+$poll = $modx->getObject('modPollCategory', $_DATA['id']);
 if(empty($poll)) return $modx->error->failure($modx->lexicon('polls.error.update'));
 
 if(isset($_DATA['publishdate']) && empty($_DATA['publishdate'])) { $_DATA['publishdate'] = null; }
