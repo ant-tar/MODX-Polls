@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The previous poll English Poll lexicon entries
  *
