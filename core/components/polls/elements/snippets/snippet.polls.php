@@ -77,12 +77,14 @@ if(!empty($id) && is_numeric($id)) {
         $answers = $modx->getCollection('modPollAnswer',$ans);
 
         $answersOutput = '';
-        foreach($answers as $idx => $answer) {
+        $idx = 1;
+        foreach($answers as $k => $answer) {
             $answerParams = array_merge(
                 $answer->toArray(), array(
                 'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
     	        'idx' => $idx
             ));
+            $idx++;
             $answersOutput .= $modx->getChunk((!$poll->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
         }
         
