@@ -27,7 +27,7 @@ $_lang['polls.error.save'] = "Failed to save the record data!";
 $_lang['polls.questions'] = "Questions";
 $_lang['polls.question'] = "Question";
 $_lang['polls.questionid'] = "QID";
-$_lang['polls.question.nocategory'] = "No category";
+$_lang['polls.question.nocategory'] = "No Category";
 $_lang['polls.questions.desc'] = "Here you can manage all the questions you want to be shown on your website. You're also able to hide polls from the website or publish and unpublish polls by setting dates. Edit values simple by clicking on the value.";
 $_lang['polls.questions.create'] = "Create Question";
 $_lang['polls.questions.create.error_save'] = "Failed to save the new question. Try it again!";
@@ -37,7 +37,7 @@ $_lang['polls.questions.duplicate_confirm'] = "Are you sure you want to duplicat
 $_lang['polls.questions.duplicate_error'] = "Failed duplicating question and/or answers. Try it again!";
 $_lang['polls.questions.update'] = "Update Question";
 $_lang['polls.questions.remove'] = "Remove Question";
-$_lang['polls.questions.remove_confirm'] = "Are you sure you want to remove this question and all the answers and stats?";
+$_lang['polls.questions.remove_confirm'] = "This action will remove all associated data, including answers and stats. Are you sure you want to remove this question?";
 $_lang['polls.questions.error_remove'] = "Failed to remove the question. Try it again!";
 
 $_lang['polls.question.update'] = "Update question";
