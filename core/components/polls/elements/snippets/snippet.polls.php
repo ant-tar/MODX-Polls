@@ -84,7 +84,7 @@ if(!empty($id) && is_numeric($id)) {
         
         if($poll->hasVoted()) {
             
-            $vote = $latest->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
+            $vote = $poll->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
             $placeholders['logdate'] = $vote->get('logdate');
         }
         
