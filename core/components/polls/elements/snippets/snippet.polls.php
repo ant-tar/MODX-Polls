@@ -68,8 +68,14 @@ if(!empty($id) && is_numeric($id)) {
         
         $category = $poll->getOne('Category');
         $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
-          
-        $answers = $poll->getMany('Answers');
+
+        $ans = $modx->newQuery('modPollAnswer');
+        $ans->sortby('sort_order','ASC');
+        $ans->where(array(
+            'question'=>$poll->id
+        ));
+        $answers = $modx->getCollection('modPollAnswer',$ans);
+
         $answersOutput = '';
         foreach($answers as $idx => $answer) {
             $answerParams = array_merge(
