@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The default English Poll lexicon entries
  *

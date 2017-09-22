@@ -68,15 +68,23 @@ if(!empty($id) && is_numeric($id)) {
         
         $category = $poll->getOne('Category');
         $placeholders['category_name'] = (!empty($category) && is_object($category)) ? $category->get('name') : '';
-          
-        $answers = $poll->getMany('Answers');
+
+        $ans = $modx->newQuery('modPollAnswer');
+        $ans->sortby('sort_order','ASC');
+        $ans->where(array(
+            'question'=>$poll->id
+        ));
+        $answers = $modx->getCollection('modPollAnswer',$ans);
+
         $answersOutput = '';
-        foreach($answers as $idx => $answer) {
+        $idx = 1;
+        foreach($answers as $k => $answer) {
             $answerParams = array_merge(
                 $answer->toArray(), array(
                 'percent' => $answer->getVotesPercent($placeholders['totalVotes']),
     	        'idx' => $idx
             ));
+            $idx++;
             $answersOutput .= $modx->getChunk((!$poll->hasVoted() ? $tplVoteAnswer : $tplResultAnswer), $answerParams);
         }
         
@@ -84,7 +92,7 @@ if(!empty($id) && is_numeric($id)) {
         
         if($poll->hasVoted()) {
             
-            $vote = $latest->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
+            $vote = $poll->getOne('Logs', array('ipaddress:=' => $_SERVER['REMOTE_ADDR']));
             $placeholders['logdate'] = $vote->get('logdate');
         }
         

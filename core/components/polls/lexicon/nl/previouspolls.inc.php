@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The previous poll Dutch Poll lexicon entries
  *
