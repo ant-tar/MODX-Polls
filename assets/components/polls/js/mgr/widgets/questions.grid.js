@@ -3,7 +3,7 @@ Polls.grid.Questions = function(config) {
 	
     Ext.applyIf(config, {
         id: 'polls-grid-questions',
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: { action: 'mgr/questions/getlist' },
 		save_action: 'mgr/questions/updateFromGrid',
 		fields: ['id','category','category_name','question','totalVotes','answers','publishdate','unpublishdate','hide','menu'],
@@ -180,7 +180,7 @@ Polls.window.CreateQuestion = function(config) {
     config = config || {};
     Ext.applyIf(config,{
 		title: _('polls.questions.create'),
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: {
 			action: 'mgr/questions/create'
 		},
@@ -216,7 +216,7 @@ Polls.window.UpdateQuestion = function(config) {
     config = config || {};
     Ext.applyIf(config,{
         title: _('polls.question.update'),
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: {
             action: 'mgr/questions/update'
         },

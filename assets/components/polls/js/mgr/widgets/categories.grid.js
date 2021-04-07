@@ -3,7 +3,7 @@ Polls.grid.Categories = function(config) {
 	
     Ext.applyIf(config, {
         id: 'polls-grid-categories',
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: { action: 'mgr/categories/getlist' },
 		save_action: 'mgr/categories/updateFromGrid',
 		fields: ['id','name','menu'],
@@ -88,7 +88,7 @@ Polls.window.CreateCategory = function(config) {
     config = config || {};
     Ext.applyIf(config,{
 		title: _('polls.categories.create'),
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: {
 			action: 'mgr/categories/create'
 		},

@@ -3,7 +3,7 @@ Polls.grid.Answers = function(config) {
 	
     Ext.applyIf(config, {
         id: 'polls-grid-answers',
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: {
 			action: 'mgr/answers/getlist',
 			id: MODx.request.question
@@ -105,7 +105,7 @@ Polls.window.CreateAnswer = function(config) {
     config = config || {};
     Ext.applyIf(config,{
 		title: _('polls.answers.create'),
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: {
 			action: 'mgr/answers/create'
 		},
