@@ -14,7 +14,7 @@ Polls.combo.CategoryList = function(config) {
 		editable: false,
 		allowBlank: true,
 		autocomplete: true,
-		url: Polls.config.connector_url,
+		url: Polls.config.connectorUrl,
 		baseParams: {
             action: 'mgr/categories/getList',
 			combo: true
